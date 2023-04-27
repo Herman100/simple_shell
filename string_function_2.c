@@ -105,14 +105,14 @@ char *_strtok(char *prmString, char *prmSeparators, char **prmSavePtr)
 		*prmSavePtr = prmString + 1;
 		return ("");
 	}
-	prmString += _strpn(prmString, prmSeparators);
+	prmString += _strspn(prmString, prmSeparators);
 	if (*prmString == '\0')
 	{
 		*prmSavePtr = prmString;
 		return (NULL);
 	}
-	end = prmString + _strcspn(prmString, prmSeparator);
-	if (*end == '\0)
+	end = prmString + _strcspn(prmString, prmSeparators);
+	if (*end == '\0')
 	{
 		*prmSavePtr = end;
 		return (prmString);
